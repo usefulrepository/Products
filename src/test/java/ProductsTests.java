@@ -13,6 +13,21 @@ import java.util.stream.Stream;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ProductsTests {
 
+    public Stream<Arguments> provideArguments() {
+        // Provide your custom arguments here
+        return Stream.of(
+                Arguments.of(1, 2, 3),
+                Arguments.of(4, 5, 9),
+                Arguments.of(7, 8, 15)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideArguments")
+    public void productCreateTest(){
+
+    }
+
     @Test
     public void postgreSQLCreateTest(){
         var postgreSQL = PostgreSQL.builder()
