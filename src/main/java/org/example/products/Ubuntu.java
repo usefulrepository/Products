@@ -3,24 +3,22 @@ package org.example.products;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Builder
+@SuperBuilder
 @Getter
-@ToString(exclude = "users")
-public class Ubuntu {
+@ToString(callSuper = true)
+public class Ubuntu extends Product {
 
-    private final String productType = "Ubuntu";
-    private String name;
     private String osVersion;
     @Builder.Default
     private HashMap<String, String> users = new HashMap<>(Map.of("user", "12345"));;
-    @Builder.Default
-    private Boolean isOn = false;
 
     public void create(){
+        productType = "Ubuntu";
         System.out.println("Продукт: %s успешно создан со следующими параметрами: %s,\nПользователи: %s"
                 .formatted(productType, this, users));
     }
