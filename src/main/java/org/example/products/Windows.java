@@ -9,10 +9,10 @@ import java.util.Map;
 
 @Builder
 @Getter
-@ToString(exclude = "disks")
+@ToString
 public class Windows {
 
-    private final String productType = "Windows";
+    private String productType;
     private String name;
     private String osVersion;
     @Builder.Default
@@ -21,6 +21,7 @@ public class Windows {
     private Boolean isOn = false;
 
     public void create(){
+        productType = "Windows";
         System.out.println("Продукт: %s успешно создан со следующими параметрами: %s,\nДиски: %s"
                 .formatted(productType, this, disks));
     }

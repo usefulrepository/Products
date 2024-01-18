@@ -9,10 +9,10 @@ import java.util.Map;
 
 @Builder
 @Getter
-@ToString(exclude = "databases")
+@ToString
 public class PostgreSQL {
 
-    private final String productType = "PostgreSQL";
+    private String productType;
     private String name;
     private String osVersion;
     @Builder.Default
@@ -21,6 +21,7 @@ public class PostgreSQL {
     private Boolean isOn = false;
 
     public void create() {
+        productType = "PostgreSQL";
         System.out.println("Продукт: %s успешно создан со следующими параметрами: %s,\nБазы данных: %s"
                 .formatted(productType, this, databases));
     }
